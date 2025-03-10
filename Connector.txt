@@ -1,0 +1,28 @@
+# Step 1: Install NGINX on Ubuntu/Linux
+sudo apt update
+sudo apt install nginx -y
+sudo systemctl start nginx
+sudo systemctl enable nginx
+
+# Step 2: Configure NGINX as a Load Balancer
+sudo nano /etc/nginx/nginx.conf
+
+# Paste the following configuration in nginx.conf
+http {
+    upstream backend_servers {
+        server 192.168.1.101:80;  # Server 1
+        server 192.168.1.102:80;  # Server 2
+        server 192.168.1.103:80;  # Server 3
+    }
+
+    server {
+        listen 80;
+
+        location / {
+            proxy_pass http://backend_servers;
+            proxy_set_header Host $host;
+            proxy_set_header X-Real-IP $remote_addr;
+            proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        }
+    }
+}
