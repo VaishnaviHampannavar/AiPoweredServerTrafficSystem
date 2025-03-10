@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Server Traffic Dashboard</title>
+    <link rel="stylesheet" href="style.css"> <!-- CSS Connection -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script> <!-- Load Chart.js -->
+</head>
+<body>
+
+    <div class="container">
+        <h1>📊 Server Traffic Dashboard</h1>
+
+        <!-- Filter Buttons -->
+        <div class="filters">
+            <button onclick="changeFilter('hourly')">Hourly</button>
+            <button onclick="changeFilter('daily')">Daily</button>
+            <button onclick="changeFilter('weekly')">Weekly</button>
+        </div>
+
+        <!-- Speedometer Gauges -->
+        <div class="speedometers">
+            <div class="speedometer-container">
+                <h2>📡 Server 1 Load</h2>
+                <canvas id="serverSpeedometer"></canvas>
+                <p id="server-status">Checking server status...</p>
+            </div>
+
+            <div class="speedometer-container">
+                <h2>📡 Server 2 Load</h2>
+                <canvas id="server2Speedometer"></canvas>
+                <p id="server2-status">Waiting...</p>
+            </div>
+
+            <div class="speedometer-container">
+                <h2>👥 Active Users</h2>
+                <canvas id="userSpeedometer"></canvas>
+                <p id="user-status">Checking user activity...</p>
+            </div>
+        </div>
+
+        <!-- Requests Per Second -->
+        <div class="dashboard-container">
+            <h2>⚡ Requests Per Second</h2>
+            <canvas id="requestsChart"></canvas>
+            <p>Real-time server requests</p>
+        </div>
+
+        <!-- AI Traffic Prediction -->
+        <div class="dashboard-container">
+            <h2>🤖 AI Traffic Prediction</h2>
+            <canvas id="aiPredictionChart"></canvas>
+            <p>AI-powered traffic forecasts</p>
+        </div>
+
+        <!-- Traffic Chart -->
+        <div class="dashboard-container">
+            <div id="loading">Fetching data...</div>
+            <canvas id="trafficChart"></canvas>
+        </div>
+    </div>
+
+    <script src="script.js" defer></script> <!-- JavaScript Connection -->
+</body>
+</html>
